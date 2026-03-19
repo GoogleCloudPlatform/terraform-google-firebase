@@ -25,6 +25,7 @@ spec:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firebase_auth
+    version: 0.0.1
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
