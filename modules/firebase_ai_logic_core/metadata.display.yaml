@@ -1,0 +1,50 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: firebase-firebase-ai-logic-core-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Firebase AI Logic Core Submodule
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+      dir: /modules/firebase_ai_logic_core
+  ui:
+    input:
+      variables:
+        api_config:
+          name: api_config
+          title: Api Config
+          level: 1
+        app_id:
+          name: app_id
+          title: App Id
+        project_id:
+          name: project_id
+          title: Project Id
+        telemetry_mode:
+          name: telemetry_mode
+          title: Telemetry Mode
+        telemetry_sampling_rate:
+          name: telemetry_sampling_rate
+          title: Telemetry Sampling Rate
+    runtime:
+      outputs:
+        config_name:
+          visibility: VISIBILITY_ROOT

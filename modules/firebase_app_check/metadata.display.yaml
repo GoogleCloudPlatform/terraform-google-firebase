@@ -1,0 +1,127 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-firebase-app-check-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Firebase App Check Submodule
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+      dir: /modules/firebase_app_check
+  ui:
+    input:
+      variables:
+        android_apps:
+          name: android_apps
+          title: Android App Configurations
+          properties:
+            app_id:
+              name: app_id
+              title: Firebase App ID
+            token_ttl:
+              name: token_ttl
+              title: Token TTL
+        apple_apps:
+          name: apple_apps
+          title: Apple App Configurations
+          properties:
+            app_attest:
+              name: app_attest
+              title: Enable App Attest
+            app_id:
+              name: app_id
+              title: Firebase App ID
+            device_check:
+              name: device_check
+              title: Device Check Config
+              properties:
+                key_id:
+                  name: key_id
+                  title: Key ID
+                private_key:
+                  name: private_key
+                  title: Private Key
+            token_ttl:
+              name: token_ttl
+              title: Token TTL
+        debug_tokens:
+          name: debug_tokens
+          title: Debug Tokens
+          properties:
+            app_id:
+              name: app_id
+              title: Firebase App ID
+            display_name:
+              name: display_name
+              title: Token Name (Display)
+            token:
+              name: token
+              title: Token Value
+        enforcement_mode:
+          name: enforcement_mode
+          title: Enforcement Mode
+          enumValueLabels:
+            - label: Enforced
+              value: ENFORCED
+            - label: Unenforced (Testing)
+              value: UNENFORCED
+          level: 1
+        project_id:
+          name: project_id
+          title: Project ID
+        service_ids:
+          name: service_ids
+          title: Protected Services
+          enumValueLabels:
+            - label: Firebase Authentication
+              value: identitytoolkit.googleapis.com
+            - label: Cloud Firestore
+              value: firestore.googleapis.com
+            - label: Firebase AI Logic
+              value: firebaseml.googleapis.com
+            - label: Firebase Data Connect
+              value: firebasedataconnect.googleapis.com
+            - label: Firebase Realtime Database
+              value: firebasedatabase.googleapis.com
+            - label: Cloud Storage for Firebase
+              value: firebasestorage.googleapis.com
+          level: 1
+        web_apps:
+          name: web_apps
+          title: Web App Configurations
+          properties:
+            app_id:
+              name: app_id
+              title: Firebase App ID
+            recaptcha_v3_secret:
+              name: recaptcha_v3_secret
+              title: reCAPTCHA v3 Site Secret
+            site_key:
+              name: site_key
+              title: reCAPTCHA Enterprise Site Key
+            token_ttl:
+              name: token_ttl
+              title: Token TTL
+    runtime:
+      outputs:
+        enabled_app_ids:
+          visibility: VISIBILITY_ROOT
+        enabled_service_ids:
+          visibility: VISIBILITY_ROOT
