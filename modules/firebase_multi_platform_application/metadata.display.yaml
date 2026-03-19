@@ -1,0 +1,112 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: firebase-multi-platform-app-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Firebase Multi-Platform Application Module
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+      dir: /modules/firebase_multi_platform_application
+  ui:
+    input:
+      variables:
+        apps:
+          name: apps
+          title: Apps
+          properties:
+            android_app:
+              name: android_app
+              title: Android App
+              properties:
+                app_check_config:
+                  name: app_check_config
+                  title: App Check Configuration
+                  properties:
+                    enable:
+                      name: enable
+                      title: Register App Check protection
+                display_name:
+                  name: display_name
+                  title: Display Name
+                package_name:
+                  name: package_name
+                  title: Package Name
+                sha256_hashes:
+                  name: sha256_hashes
+                  title: SHA256 Certificate Hashes
+            apple_app:
+              name: apple_app
+              title: Apple App
+              properties:
+                app_check_config:
+                  name: app_check_config
+                  title: App Check Configuration
+                  properties:
+                    device_check_id:
+                      name: device_check_id
+                      title: DeviceCheck Key ID
+                    device_check_key:
+                      name: device_check_key
+                      title: DeviceCheck Private Key
+                    enable_app_attest:
+                      name: enable_app_attest
+                      title: Enable App Attest
+                      tooltip: Enables Firebase App Check enforcement using App Attest for this Apple app.
+                    enable_device_check:
+                      name: enable_device_check
+                      title: Enable DeviceCheck
+                      tooltip: Enables Firebase App Check enforcement using DeviceCheck for this Apple app.
+                bundle_id:
+                  name: bundle_id
+                  title: Bundle ID
+                display_name:
+                  name: display_name
+                  title: Display Name
+                team_id:
+                  name: team_id
+                  title: Developer Team ID
+            web_app:
+              name: web_app
+              title: Web App
+              properties:
+                api_key_id:
+                  name: api_key_id
+                  title: API Key ID
+                app_check_config:
+                  name: app_check_config
+                  title: App Check Configuration
+                  properties:
+                    enable:
+                      name: enable
+                      title: Register App Check protection
+                    recaptcha_site_key:
+                      name: recaptcha_site_key
+                      title: reCAPTCHA Enterprise Site Key
+                display_name:
+                  name: display_name
+                  title: Display Name
+        project_id:
+          name: project_id
+          title: Project ID
+    runtime:
+      outputs:
+        app_ids:
+          visibility: VISIBILITY_ROOT

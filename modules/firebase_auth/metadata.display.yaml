@@ -1,0 +1,108 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-firebase-firebase-auth-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Firebase Authentication Module
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+      dir: /modules/firebase_auth
+  ui:
+    input:
+      variables:
+        auth_config:
+          name: auth_config
+          title: Auth Config
+          properties:
+            allow_duplicate_emails:
+              name: allow_duplicate_emails
+              title: Allow Duplicate Emails
+            anonymous_enabled:
+              name: anonymous_enabled
+              title: Enable Anonymous Auth
+            email_enabled:
+              name: email_enabled
+              title: Enable Email/Password Auth
+            email_password_required:
+              name: email_password_required
+              title: Require Email/Password
+            phone_enabled:
+              name: phone_enabled
+              title: Enable Phone Auth
+            test_phone_numbers:
+              name: test_phone_numbers
+              title: Test Phone Numbers
+        auth_providers:
+          name: auth_providers
+          title: Auth Providers
+          properties:
+            apple:
+              name: apple
+              title: Apple Provider
+              properties:
+                client_secret:
+                  name: client_secret
+                  title: Client Secret
+                key_id:
+                  name: key_id
+                  title: Key ID
+                service_id:
+                  name: service_id
+                  title: Service ID
+                team_id:
+                  name: team_id
+                  title: Team ID
+            facebook:
+              name: facebook
+              title: Facebook Provider
+              properties:
+                app_id:
+                  name: app_id
+                  title: App ID
+                app_secret:
+                  name: app_secret
+                  title: App Secret
+            github:
+              name: github
+              title: GitHub Provider
+              properties:
+                client_id:
+                  name: client_id
+                  title: Client ID
+                client_secret:
+                  name: client_secret
+                  title: Client Secret
+            google:
+              name: google
+              title: Google Provider
+              properties:
+                client_id:
+                  name: client_id
+                  title: Client ID
+                client_secret:
+                  name: client_secret
+                  title: Client Secret
+        enable_auth_management:
+          name: enable_auth_management
+          title: Enable Auth Management
+        project_id:
+          name: project_id
+          title: Project Id

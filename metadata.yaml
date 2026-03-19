@@ -1,0 +1,78 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-firebase
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: terraform-google-firebase
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+    description: {}
+    icon: assets/icon.png
+  content:
+    subBlueprints:
+      - name: firebase_ai_logic_core
+        location: modules/firebase_ai_logic_core
+      - name: firebase_ai_logic_prompt_template
+        location: modules/firebase_ai_logic_prompt_template
+      - name: firebase_app_check
+        location: modules/firebase_app_check
+      - name: firebase_app_hosting
+        location: modules/firebase_app_hosting
+      - name: firebase_auth
+        location: modules/firebase_auth
+      - name: firebase_multi_platform_application
+        location: modules/firebase_multi_platform_application
+      - name: firestore_rules
+        location: modules/firestore_rules
+    examples:
+      - name: app_ai_storage
+        location: examples/app_ai_storage
+      - name: app_and_appcheck
+        location: examples/app_and_appcheck
+      - name: firebase_ai_logic
+        location: examples/firebase_ai_logic
+      - name: firebase_app_hosting
+        location: examples/firebase_app_hosting
+      - name: firebase_auth_suite
+        location: examples/firebase_auth_suite
+      - name: firebase_multi_platform_app
+        location: examples/firebase_multi_platform_app
+      - name: firestore_rules
+        location: examples/firestore_rules
+  interfaces: {}
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/firebase.admin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - firebase.googleapis.com
+      - firebaseappcheck.googleapis.com
+      - identitytoolkit.googleapis.com
+      - serviceusage.googleapis.com
+      - firebasevertexai.googleapis.com
+      - firebaserules.googleapis.com
+      - firestore.googleapis.com
+      - storage.googleapis.com
+      - firebaseapphosting.googleapis.com
+      - iam.googleapis.com
+      - apikeys.googleapis.com

@@ -1,0 +1,120 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: firebase-firebase-ai-logic-prompt-template
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Firebase AI Logic Prompt Template
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
+      sourceType: git
+      dir: /modules/firebase_ai_logic_prompt_template
+    version: 0.0.1
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.3"
+    description: {}
+    icon: assets/icon.png
+  content:
+    examples:
+      - name: app_ai_storage
+        location: examples/app_ai_storage
+      - name: app_and_appcheck
+        location: examples/app_and_appcheck
+      - name: firebase_ai_logic
+        location: examples/firebase_ai_logic
+      - name: firebase_app_hosting
+        location: examples/firebase_app_hosting
+      - name: firebase_auth_suite
+        location: examples/firebase_auth_suite
+      - name: firebase_multi_platform_app
+        location: examples/firebase_multi_platform_app
+      - name: firestore_rules
+        location: examples/firestore_rules
+  interfaces:
+    variables:
+      - name: project_id
+        description: The project ID.
+        varType: string
+        required: true
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_core
+              version: ">= 0.0.1"
+            spec:
+              outputExpr: project_id
+      - name: location
+        description: The location for the prompt template.
+        varType: string
+        defaultValue: global
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_core
+              version: ">= 0.0.1"
+            spec:
+              outputExpr: location
+      - name: template_id
+        description: The unique identifier for the prompt template.
+        varType: string
+        required: true
+      - name: template_content
+        description: Prompt template content. Can either be specified as a raw string or a Google Cloud Storage object
+        varType: |-
+          object({
+              raw = optional(string)
+              gcs_object_source = optional(object({
+                bucket = string
+                name   = string
+              }))
+            })
+        required: true
+      - name: enable_lock
+        description: Whether to create a production lock for the prompt template.
+        varType: bool
+        defaultValue: false
+    outputs:
+      - name: template_id
+        description: The template identifier.
+        type: string
+      - name: template_name
+        description: The full resource name of the template.
+        type: string
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/firebase.admin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - firebase.googleapis.com
+      - firebaseappcheck.googleapis.com
+      - identitytoolkit.googleapis.com
+      - serviceusage.googleapis.com
+      - firebasevertexai.googleapis.com
+      - firebaserules.googleapis.com
+      - firestore.googleapis.com
+      - storage.googleapis.com
+      - firebaseapphosting.googleapis.com
+      - iam.googleapis.com
+      - apikeys.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 5.0, < 8.0"
+      - source: hashicorp/google-beta
+        version: ">= 7.17.0, < 8.0"
