@@ -20,12 +20,11 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: Firebase Firestore Rules
+    title: Firestore Rules
     source:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firestore_rules
-    version: 0.0.1
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -92,20 +91,12 @@ spec:
     roles:
       - level: Project
         roles:
+          - roles/datastore.owner
           - roles/firebase.admin
+          - roles/serviceusage.serviceUsageAdmin
     services:
-      - cloudresourcemanager.googleapis.com
-      - firebase.googleapis.com
-      - firebaseappcheck.googleapis.com
-      - identitytoolkit.googleapis.com
-      - serviceusage.googleapis.com
-      - firebasevertexai.googleapis.com
       - firebaserules.googleapis.com
       - firestore.googleapis.com
-      - storage.googleapis.com
-      - firebaseapphosting.googleapis.com
-      - iam.googleapis.com
-      - apikeys.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 5.0, < 8.0"

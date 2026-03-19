@@ -1,4 +1,4 @@
-# Firebase AI Logic Prompt Template Submodule
+# Firebase AI Logic Prompt Template
 
 This module manages individual prompt templates for Firebase AI Logic.
 

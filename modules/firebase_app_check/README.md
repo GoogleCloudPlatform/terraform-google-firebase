@@ -1,4 +1,4 @@
-# Firebase App Check Submodule
+# Firebase App Check
 
 ## Requirements
 

@@ -13,7 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+locals {
+  per_module_services = {
+    firebase_ai_logic_core = [
+      "firebase.googleapis.com",
+      "firebasevertexai.googleapis.com",
+      "apikeys.googleapis.com",
+      "serviceusage.googleapis.com"
+    ]
+    firebase_ai_logic_prompt_template = [
+      "firebase.googleapis.com",
+      "firebasevertexai.googleapis.com",
+      "storage.googleapis.com"
+    ]
+    firebase_app_check = [
+      "firebaseappcheck.googleapis.com"
+    ]
+    firebase_app_hosting = [
+      "firebaseapphosting.googleapis.com",
+      "iam.googleapis.com"
+    ]
+    firebase_auth = [
+      "identitytoolkit.googleapis.com"
+    ]
+    firebase_multi_platform_application = [
+      "firebase.googleapis.com"
+    ]
+    firestore_rules = [
+      "firestore.googleapis.com",
+      "firebaserules.googleapis.com"
+    ]
+  }
+}
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 17.0"
@@ -24,20 +55,10 @@ module "project" {
   folder_id         = var.folder_id
   billing_account   = var.billing_account
 
-  activate_apis = [
+  activate_apis = distinct(concat([
     "cloudresourcemanager.googleapis.com",
-    "firebase.googleapis.com",
-    "firebaseappcheck.googleapis.com",
-    "identitytoolkit.googleapis.com",
-    "serviceusage.googleapis.com",
-    "firebasevertexai.googleapis.com",
-    "firebaserules.googleapis.com",
-    "firestore.googleapis.com",
-    "storage.googleapis.com",
-    "firebaseapphosting.googleapis.com",
-    "iam.googleapis.com",
-    "apikeys.googleapis.com"
-  ]
+    "serviceusage.googleapis.com"
+  ], flatten(values(local.per_module_services))))
 
   deletion_policy = "DELETE"
 }

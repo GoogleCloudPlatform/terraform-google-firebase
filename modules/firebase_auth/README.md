@@ -1,4 +1,4 @@
-# Firebase Authentication Module
+# Firebase Authentication
 
 This module manages Firebase Authentication (Identity Platform) configuration and social identity providers for a Google Cloud project.
 

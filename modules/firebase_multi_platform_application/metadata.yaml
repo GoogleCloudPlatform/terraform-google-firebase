@@ -25,7 +25,6 @@ spec:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firebase_multi_platform_application
-    version: 0.0.1
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -54,10 +53,7 @@ spec:
         varType: string
         required: true
       - name: apps
-        description: >-
-          Configuration for Firebase apps. If you leave all the inputs of the app
-          (ios, android, or web details) empty, the app will not be created.
-          Only filled input for app will be created.
+        description: Configuration for Firebase apps. If you leave all the inputs of the app (ios, android, or web details) empty, the app will not be created. Only filled input for app will be created.
         varType: |-
           object({
               web_app = optional(object({
@@ -167,19 +163,11 @@ spec:
       - level: Project
         roles:
           - roles/firebase.admin
+          - roles/resourcemanager.projectIamAdmin
+          - roles/serviceusage.apiKeysAdmin
+          - roles/serviceusage.serviceUsageAdmin
     services:
-      - cloudresourcemanager.googleapis.com
       - firebase.googleapis.com
-      - firebaseappcheck.googleapis.com
-      - identitytoolkit.googleapis.com
-      - serviceusage.googleapis.com
-      - firebasevertexai.googleapis.com
-      - firebaserules.googleapis.com
-      - firestore.googleapis.com
-      - storage.googleapis.com
-      - firebaseapphosting.googleapis.com
-      - iam.googleapis.com
-      - apikeys.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 5.0, < 8.0"

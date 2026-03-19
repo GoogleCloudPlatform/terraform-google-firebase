@@ -63,16 +63,8 @@ spec:
       - level: Project
         roles:
           - roles/firebase.admin
-    services:
-      - cloudresourcemanager.googleapis.com
-      - firebase.googleapis.com
-      - firebaseappcheck.googleapis.com
-      - identitytoolkit.googleapis.com
-      - serviceusage.googleapis.com
-      - firebasevertexai.googleapis.com
-      - firebaserules.googleapis.com
-      - firestore.googleapis.com
-      - storage.googleapis.com
-      - firebaseapphosting.googleapis.com
-      - iam.googleapis.com
-      - apikeys.googleapis.com
+          - roles/firebaseapphosting.admin
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+          - roles/resourcemanager.projectIamAdmin
+          - roles/serviceusage.serviceUsageAdmin

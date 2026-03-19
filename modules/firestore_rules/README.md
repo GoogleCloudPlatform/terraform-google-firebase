@@ -1,4 +1,4 @@
-# Firestore Rules Submodule
+# Firestore Rules
 
 ## Requirements
 

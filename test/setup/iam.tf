@@ -16,7 +16,7 @@
 
 locals {
   per_module_roles = {
-    firebase_multi_platform_app = [
+    firebase_multi_platform_application = [
       "roles/firebase.admin",
       "roles/serviceusage.serviceUsageAdmin",
       "roles/serviceusage.apiKeysAdmin",
@@ -59,7 +59,7 @@ locals {
     ]
   }
 
-  int_required_roles = tolist(toset(flatten(values(local.per_module_roles))))
+  int_required_roles = sort(distinct(flatten(values(local.per_module_roles))))
 }
 
 resource "google_service_account" "int_test" {

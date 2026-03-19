@@ -1,4 +1,4 @@
-# Firebase AI Logic Core Submodule
+# Firebase AI Logic Core
 
 This module manages the project-wide global configuration for Firebase AI Logic.
 

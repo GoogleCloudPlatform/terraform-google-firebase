@@ -1,4 +1,4 @@
-# Firebase App Hosting Submodule
+# Firebase App Hosting
 
 ## Requirements
 

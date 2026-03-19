@@ -20,7 +20,7 @@ variable "project_id" {
 }
 
 variable "apps" {
-  description = "Configuration for Firebase apps."
+  description = "Configuration for Firebase apps. If you leave all the inputs of the app (ios, android, or web details) empty, the app will not be created. Only filled input for app will be created."
   type = object({
     web_app = optional(object({
       display_name = optional(string)
