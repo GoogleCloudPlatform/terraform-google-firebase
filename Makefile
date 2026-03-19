@@ -22,6 +22,8 @@ DOCKER_TAG_VERSION_DEVELOPER_TOOLS := 1
 DOCKER_IMAGE_DEVELOPER_TOOLS := cft/developer-tools
 REGISTRY_URL := gcr.io/cloud-foundation-cicd
 
+export ENABLE_BPMETADATA := 1
+
 # Enter docker container for local development
 .PHONY: docker_run
 docker_run:
@@ -73,6 +75,12 @@ docker_test_lint:
 		-v "$(CURDIR)":/workspace \
 		$(REGISTRY_URL)/${DOCKER_IMAGE_DEVELOPER_TOOLS}:${DOCKER_TAG_VERSION_DEVELOPER_TOOLS} \
 		/usr/local/bin/test_lint.sh
+	docker run --rm -v "$(CURDIR):/workspace" -w /workspace node:18 npx markdownlint-cli2 "**/*.md" "#node_modules" "#**/.terraform/**"
+
+# Format markdown files automatically
+.PHONY: docker_format_md
+docker_format_md:
+	docker run --rm -v "$(CURDIR):/workspace" -w /workspace node:18 npx markdownlint-cli2 --fix "**/*.md" "#node_modules" "#**/.terraform/**"
 
 # Generate documentation
 .PHONY: docker_generate_docs

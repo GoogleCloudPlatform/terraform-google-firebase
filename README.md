@@ -15,6 +15,7 @@ This module consists of the following submodules:
 See more details in each module's README.
 
 ## Compatibility
+
 This module is meant for use with Terraform 1.3+ and tested using Terraform 1.6+.
 If you find incompatibilities using Terraform `>=1.13`, please open an issue.
 
@@ -54,9 +55,9 @@ In order to operate with the Service Account you must activate the following API
 
 You can pass the service account credentials into this module by setting the following environment variables:
 
-* `GOOGLE_CREDENTIALS`
-* `GOOGLE_CLOUD_KEYFILE_JSON`
-* `GCLOUD_KEYFILE_JSON`
+- `GOOGLE_CREDENTIALS`
+- `GOOGLE_CLOUD_KEYFILE_JSON`
+- `GCLOUD_KEYFILE_JSON`
 
 See more [details](https://www.terraform.io/docs/providers/google/provider_reference.html#configuration-reference).
 
@@ -67,6 +68,7 @@ This module has no root configuration. A module with no root configuration canno
 Copy and paste into your Terraform configuration, insert the variables, and run `terraform init`:
 
 For Firebase Multi-Platform App:
+
 ```hcl
 module "multi_platform_app" {
   source  = "GoogleCloudPlatform/firebase/google//modules/firebase_multi_platform_application"

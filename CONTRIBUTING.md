@@ -57,14 +57,17 @@ The general strategy for these tests is to verify the behaviour of the
 submodules, and example modules are all functionally correct.
 
 #### Test Environment
+
 The easiest way to test the module is in an isolated test project. The setup for such a project is defined in [test/setup](./test/setup/) directory.
 
 To use this setup, you need a service account with these permissions (on a Folder or Organization):
+
 - Project Creator
 - Project Billing Manager
 
 The project that the service account belongs to must have the following APIs enabled (the setup won't
 create any resources on the service account's project):
+
 - Cloud Resource Manager
 - Cloud Billing
 - Service Usage
@@ -77,6 +80,7 @@ export SERVICE_ACCOUNT_JSON=$(< credentials.json)
 ```
 
 You will also need to set a few environment variables:
+
 ```
 export TF_VAR_org_id="your_org_id"
 export TF_VAR_folder_id="your_folder_id"
@@ -84,6 +88,7 @@ export TF_VAR_billing_account="your_billing_account_id"
 ```
 
 With these settings in place, you can prepare a test project using Docker:
+
 ```
 make docker_test_prepare
 ```
@@ -118,14 +123,8 @@ maintain a standard of quality.
 Run `make docker_test_lint`.
 
 [docker-engine]: https://www.docker.com/products/docker-engine
-[flake8]: http://flake8.pycqa.org/en/latest/
-[gofmt]: https://golang.org/cmd/gofmt/
 [google-cloud-sdk]: https://cloud.google.com/sdk/install
-[hadolint]: https://github.com/hadolint/hadolint
 [inspec]: https://inspec.io/
 [kitchen-terraform]: https://github.com/newcontext-oss/kitchen-terraform
 [kitchen]: https://kitchen.ci/
 [make]: https://en.wikipedia.org/wiki/Make_(software)
-[shellcheck]: https://www.shellcheck.net/
-[terraform-docs]: https://github.com/segmentio/terraform-docs
-[terraform]: https://terraform.io/

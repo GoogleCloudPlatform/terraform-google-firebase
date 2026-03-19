@@ -13,5 +13,3 @@ This changelog is generated automatically based on [Conventional Commits](https:
 ### Features
 
 - Initial release
-
-[0.1.0]: https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.1.0

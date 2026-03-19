@@ -30,7 +30,6 @@ module "firebase_app" {
 }
 ```
 
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
