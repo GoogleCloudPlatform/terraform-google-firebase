@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firebase_multi_platform_application
-    version: 0.1.0
+    version: 0.1.1
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -56,27 +56,27 @@ spec:
         connections:
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_core
-              version: ">= 0.1.0"
+              version: ">= 0.1.1"
             spec:
               outputExpr: project_id
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_prompt_template
-              version: ">= 0.1.0"
+              version: ">= 0.1.1"
             spec:
               outputExpr: project_id
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_app_check
-              version: ">= 0.1.0"
+              version: ">= 0.1.1"
             spec:
               outputExpr: project_id
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_auth
-              version: ">= 0.1.0"
+              version: ">= 0.1.1"
             spec:
               outputExpr: project_id
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firestore_rules
-              version: ">= 0.1.0"
+              version: ">= 0.1.1"
             spec:
               outputExpr: project_id
           - source:

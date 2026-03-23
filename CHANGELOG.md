@@ -8,6 +8,16 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.1.1](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.1.1) - 2026-03-23
+
+### Bug Fixes
+
+- Remove no longer applicable connection for ai logic template location
+
+### Features
+
+- Add incoming connections from other components to Firebase modules
+
 ## [0.1.0](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.1.0) - 2026-03-19
 
 ### Features
