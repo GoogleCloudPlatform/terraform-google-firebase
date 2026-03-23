@@ -68,12 +68,6 @@ spec:
         description: The location for the prompt template.
         varType: string
         defaultValue: global
-        connections:
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_core
-              version: ">= 0.1.0"
-            spec:
-              outputExpr: location
       - name: template_id
         description: The unique identifier for the prompt template.
         varType: string
