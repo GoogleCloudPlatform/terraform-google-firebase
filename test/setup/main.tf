@@ -19,7 +19,6 @@ locals {
       "firebase.googleapis.com",
       "firebasevertexai.googleapis.com",
       "apikeys.googleapis.com",
-      "serviceusage.googleapis.com"
     ]
     firebase_ai_logic_prompt_template = [
       "firebase.googleapis.com",
