@@ -41,6 +41,11 @@ spec:
         telemetry_mode:
           name: telemetry_mode
           title: Telemetry Mode
+          enumValueLabels:
+            - label: Enabled
+              value: ALL
+            - label: Disabled
+              value: NONE
         telemetry_sampling_rate:
           name: telemetry_sampling_rate
           title: Telemetry Sampling Rate
