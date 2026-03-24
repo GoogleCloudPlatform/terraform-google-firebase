@@ -25,7 +25,6 @@ spec:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firebase_app_hosting
-    version: 0.1.1
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -115,6 +114,7 @@ spec:
     services:
       - firebaseapphosting.googleapis.com
       - iam.googleapis.com
+      - serviceusage.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 5.0, < 8.0"
