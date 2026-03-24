@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.1.2](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.1.2) - 2026-03-24
+
+### Bug Fixes
+
+- Update `firebase_ai_logic_prompt_template` 's `template_content` field description
+- Regenerate metadata and require serviceusage API in all modules
+
 ## [0.1.1](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.1.1) - 2026-03-23
 
 ### Bug Fixes
