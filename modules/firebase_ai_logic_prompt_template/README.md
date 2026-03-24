@@ -10,7 +10,7 @@ This module manages individual prompt templates for Firebase AI Logic.
 | enable\_lock | Whether to create a production lock for the prompt template. | `bool` | `false` | no |
 | location | The location for the prompt template. | `string` | `"global"` | no |
 | project\_id | The project ID. | `string` | n/a | yes |
-| template\_content | Prompt template content. Can either be specified as a raw string or a Google Cloud Storage object | <pre>object({<br>    raw = optional(string)<br>    gcs_object_source = optional(object({<br>      bucket = string<br>      name   = string<br>    }))<br>  })</pre> | n/a | yes |
+| template\_content | Prompt template content. Only one of `raw` or `gcs_object_source` should be provided. If both are provided, `raw` takes precedence. | <pre>object({<br>    raw = optional(string)<br>    gcs_object_source = optional(object({<br>      bucket = string<br>      name   = string<br>    }))<br>  })</pre> | n/a | yes |
 | template\_id | The unique identifier for the prompt template. | `string` | n/a | yes |
 
 ## Outputs
