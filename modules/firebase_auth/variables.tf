@@ -34,6 +34,7 @@ variable "auth_config" {
     email_password_required = optional(bool, true)
     phone_enabled           = optional(bool, false)
     test_phone_numbers      = optional(map(string), {})
+    authorized_domains      = optional(list(string), ["localhost"])
   })
   default = {}
 }

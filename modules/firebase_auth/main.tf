@@ -20,6 +20,11 @@ resource "google_identity_platform_config" "auth" {
   provider = google-beta
   project  = var.project_id
 
+  authorized_domains = distinct(concat(
+    ["${var.project_id}.firebaseapp.com"],
+    var.auth_config.authorized_domains != null ? var.auth_config.authorized_domains : []
+  ))
+
   sign_in {
     allow_duplicate_emails = var.auth_config.allow_duplicate_emails
 

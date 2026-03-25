@@ -50,6 +50,9 @@ spec:
             test_phone_numbers:
               name: test_phone_numbers
               title: Test Phone Numbers
+            authorized_domains:
+              name: authorized_domains
+              title: Authorized Domains
         auth_providers:
           name: auth_providers
           title: Auth Providers

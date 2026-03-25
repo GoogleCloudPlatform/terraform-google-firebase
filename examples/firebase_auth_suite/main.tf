@@ -24,6 +24,7 @@ module "auth_core" {
     email_enabled          = true
     anonymous_enabled      = true
     allow_duplicate_emails = false
+    authorized_domains     = ["example.com", "another-domain.com"]
   }
 
   auth_providers = {
