@@ -111,6 +111,7 @@ spec:
         roles:
           - roles/firebase.admin
           - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
           - roles/serviceusage.serviceUsageAdmin
     services:
       - firebaseapphosting.googleapis.com
