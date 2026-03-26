@@ -53,12 +53,6 @@ spec:
         description: The ID of the project in which the resource belongs.
         varType: string
         required: true
-        connections:
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_multi_platform_application
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
       - name: database_id
         description: The Firestore database id, use `(default)` for the default database.
         varType: string

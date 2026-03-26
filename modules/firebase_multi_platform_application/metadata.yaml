@@ -53,57 +53,6 @@ spec:
         description: The GCP project ID to initialize Firebase in.
         varType: string
         required: true
-        connections:
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_core
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_ai_logic_prompt_template
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_app_check
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_auth
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firestore_rules
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/terraform-google-modules/terraform-google-pubsub
-              version: ">= 8.6.0"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/terraform-google-modules/terraform-google-kms
-              version: ">= 4.1.2"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/terraform-google-modules/terraform-google-service-accounts//modules/simple-sa
-              version: ">= 4.7.0"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-cloud-tasks
-              version: ">= 0.4.0"
-            spec:
-              outputExpr: project_id
-          - source:
-              source: github.com/GoogleCloudPlatform/terraform-google-cloud-scheduler
-              version: ">= 0.1.1"
-            spec:
-              outputExpr: project_id
       - name: apps
         description: Configuration for Firebase apps. If you leave all the inputs of the app (ios, android, or web details) empty, the app will not be created. Only filled input for app will be created.
         varType: |-
@@ -192,9 +141,6 @@ spec:
           - string
       - name: apple_config
         description: The GoogleService-Info.plist content for the Apple App.
-        type: string
-      - name: project_id
-        description: The project ID.
         type: string
       - name: web_config
         description: The configuration snippet for the Firebase Web App.
