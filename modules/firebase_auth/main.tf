@@ -43,11 +43,13 @@ resource "google_identity_platform_config" "auth" {
     }
   }
 
-  multi_tenant {
-    allow_tenants = false
+  dynamic "multi_tenant" {
+    for_each = [var.multi_tenant != null ? var.multi_tenant : { allow_tenant_creation = false, default_tenant_location = "" }]
+    content {
+      allow_tenants           = try(multi_tenant.value.allow_tenant_creation, false)
+      default_tenant_location = try(multi_tenant.value.default_tenant_location, "")
+    }
   }
-
-  autodelete_anonymous_users = true
 
   dynamic "sms_region_config" {
     for_each = var.auth_config.sms_region_config != null ? [var.auth_config.sms_region_config] : []
@@ -66,7 +68,74 @@ resource "google_identity_platform_config" "auth" {
       }
     }
   }
+
+  dynamic "blocking_functions" {
+    for_each = var.blocking_functions != null ? [var.blocking_functions] : []
+    content {
+      dynamic "triggers" {
+        for_each = blocking_functions.value.triggers != null ? blocking_functions.value.triggers : []
+        content {
+          event_type   = triggers.value.event_type
+          function_uri = triggers.value.function_uri
+        }
+      }
+      dynamic "forward_inbound_credentials" {
+        for_each = blocking_functions.value.forward_inbound_credentials != null ? [blocking_functions.value.forward_inbound_credentials] : []
+        content {
+          id_token      = forward_inbound_credentials.value.id_token
+          access_token  = forward_inbound_credentials.value.access_token
+          refresh_token = forward_inbound_credentials.value.refresh_token
+        }
+      }
+    }
+  }
+
+  dynamic "quota" {
+    for_each = var.quota != null ? [var.quota] : []
+    content {
+      dynamic "sign_up_quota_config" {
+        for_each = quota.value.sign_up_quota_config != null ? [quota.value.sign_up_quota_config] : []
+        content {
+          quota          = sign_up_quota_config.value.quota
+          start_time     = sign_up_quota_config.value.start_time
+          quota_duration = sign_up_quota_config.value.quota_duration
+        }
+      }
+    }
+  }
+
+  dynamic "mfa" {
+    for_each = [var.mfa != null ? var.mfa : { state = "DISABLED", provider_configs = [] }]
+    content {
+      state = try(mfa.value.state, "DISABLED")
+      dynamic "provider_configs" {
+        for_each = try(mfa.value.provider_configs, [])
+        content {
+          state = try(provider_configs.value.state, "DISABLED")
+          dynamic "totp_provider_config" {
+            for_each = try([provider_configs.value.totp_provider_config], [])
+            content {
+              adjacent_intervals = try(totp_provider_config.value.adjacent_intervals, null)
+            }
+          }
+        }
+      }
+    }
+  }
+
+  dynamic "monitoring" {
+    for_each = [var.monitoring != null ? var.monitoring : { request_logging_enabled = false }]
+    content {
+      request_logging {
+        enabled = try(monitoring.value.request_logging_enabled, false)
+      }
+    }
+  }
+
+  autodelete_anonymous_users = var.autodelete_anonymous_users
+
 }
+
 
 # Google Provider
 resource "google_identity_platform_default_supported_idp_config" "google" {

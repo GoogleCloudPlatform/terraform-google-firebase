@@ -121,9 +121,38 @@ spec:
                 client_secret:
                   name: client_secret
                   title: Client Secret
+        autodelete_anonymous_users:
+          name: autodelete_anonymous_users
+          title: Autodelete Anonymous Users
+        blocking_functions:
+          name: blocking_functions
+          title: Blocking Functions
         enable_auth_management:
           name: enable_auth_management
           title: Enable Auth Management
+        mfa:
+          name: mfa
+          title: Multi-Factor Authentication State
+          properties:
+            state:
+              name: state
+              title: State
+              enumValueLabels:
+                - label: Disabled
+                  value: DISABLED
+                - label: Enabled
+                  value: ENABLED
+                - label: Mandatory
+                  value: MANDATORY
+        monitoring:
+          name: monitoring
+          title: Monitoring
+        multi_tenant:
+          name: multi_tenant
+          title: Multi Tenant
         project_id:
           name: project_id
           title: Project Id
+        quota:
+          name: quota
+          title: Quota

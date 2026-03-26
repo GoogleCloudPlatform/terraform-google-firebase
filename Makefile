@@ -67,6 +67,17 @@ docker_test_integration:
 		$(REGISTRY_URL)/${DOCKER_IMAGE_DEVELOPER_TOOLS}:${DOCKER_TAG_VERSION_DEVELOPER_TOOLS} \
 		/usr/local/bin/test_integration.sh
 
+# Execute local integration tests within the docker container with swapped modules
+.PHONY: docker_test_local
+docker_test_local:
+	docker run --rm -it \
+		-e SERVICE_ACCOUNT_JSON \
+		-e TF_VAR_project_id \
+		-v "$(CURDIR)":/workspace \
+		$(REGISTRY_URL)/${DOCKER_IMAGE_DEVELOPER_TOOLS}:${DOCKER_TAG_VERSION_DEVELOPER_TOOLS} \
+		/bin/bash -c 'module-swapper -registry-prefix=GoogleCloudPlatform; STATUS=$$?; if [ $$STATUS -eq 0 ]; then cft test run all; STATUS=$$?; fi; module-swapper -registry-prefix=GoogleCloudPlatform -restore; exit $$STATUS'
+
+
 # Execute lint tests within the docker container
 .PHONY: docker_test_lint
 docker_test_lint:

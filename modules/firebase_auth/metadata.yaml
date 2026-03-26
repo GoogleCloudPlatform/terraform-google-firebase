@@ -153,6 +153,59 @@ spec:
               }))
             })
         defaultValue: {}
+      - name: autodelete_anonymous_users
+        description: Whether to auto-delete anonymous users.
+        varType: bool
+        defaultValue: true
+      - name: blocking_functions
+        description: Configuration related to blocking functions.
+        varType: |-
+          object({
+              triggers = optional(list(object({
+                event_type   = string
+                function_uri = string
+              })))
+              forward_inbound_credentials = optional(object({
+                id_token      = optional(bool)
+                access_token  = optional(bool)
+                refresh_token = optional(bool)
+              }))
+            })
+      - name: quota
+        description: Configuration related to quotas.
+        varType: |-
+          object({
+              sign_up_quota_config = optional(object({
+                quota          = optional(number)
+                start_time     = optional(string)
+                quota_duration = optional(string)
+              }))
+            })
+      - name: mfa
+        description: Options related to Multi-Factor Authentication (MFA).
+        varType: |-
+          object({
+              state = optional(string) # DISABLED, ENABLED, MANDATORY
+              provider_configs = optional(list(object({
+                state = optional(string)
+                totp_provider_config = optional(object({
+                  adjacent_intervals = optional(number)
+                }))
+              })))
+            })
+      - name: multi_tenant
+        description: Configuration related to multi-tenant functionality.
+        varType: |-
+          object({
+              allow_tenant_creation   = optional(bool)
+              default_tenant_location = optional(string)
+            })
+      - name: monitoring
+        description: Configuration related to monitoring project activity.
+        varType: |-
+          object({
+              request_logging_enabled = optional(bool)
+            })
     outputs:
       - name: enabled_providers
         description: List of enabled authentication providers.

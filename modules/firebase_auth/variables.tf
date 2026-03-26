@@ -71,3 +71,68 @@ variable "auth_providers" {
   })
   default = {}
 }
+
+variable "autodelete_anonymous_users" {
+  description = "Whether to auto-delete anonymous users."
+  type        = bool
+  default     = true
+}
+
+variable "blocking_functions" {
+  description = "Configuration related to blocking functions."
+  type = object({
+    triggers = optional(list(object({
+      event_type   = string
+      function_uri = string
+    })))
+    forward_inbound_credentials = optional(object({
+      id_token      = optional(bool)
+      access_token  = optional(bool)
+      refresh_token = optional(bool)
+    }))
+  })
+  default = null
+}
+
+variable "quota" {
+  description = "Configuration related to quotas."
+  type = object({
+    sign_up_quota_config = optional(object({
+      quota          = optional(number)
+      start_time     = optional(string)
+      quota_duration = optional(string)
+    }))
+  })
+  default = null
+}
+
+variable "mfa" {
+  description = "Options related to Multi-Factor Authentication (MFA)."
+  type = object({
+    state = optional(string) # DISABLED, ENABLED, MANDATORY
+    provider_configs = optional(list(object({
+      state = optional(string)
+      totp_provider_config = optional(object({
+        adjacent_intervals = optional(number)
+      }))
+    })))
+  })
+  default = null
+}
+
+variable "multi_tenant" {
+  description = "Configuration related to multi-tenant functionality."
+  type = object({
+    allow_tenant_creation   = optional(bool)
+    default_tenant_location = optional(string)
+  })
+  default = null
+}
+
+variable "monitoring" {
+  description = "Configuration related to monitoring project activity."
+  type = object({
+    request_logging_enabled = optional(bool)
+  })
+  default = null
+}
