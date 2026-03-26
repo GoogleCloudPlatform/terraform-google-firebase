@@ -25,6 +25,7 @@ spec:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firebase_auth
+    version: 0.1.3
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -170,6 +171,7 @@ spec:
           - roles/serviceusage.serviceUsageAdmin
     services:
       - identitytoolkit.googleapis.com
+      - serviceusage.googleapis.com
     providerVersions:
       - source: hashicorp/google-beta
         version: ">= 6.13.0"
