@@ -56,6 +56,16 @@ func TestFirebaseAuthSuite(t *testing.T) {
 		assert.True(authConfig.Get("signIn.anonymous.enabled").Bool(), "Anonymous sign-in should be enabled")
 		assert.False(authConfig.Get("signIn.allowDuplicateEmails").Bool(), "Duplicate emails should be disabled")
 
+		// Verify SMS Region Config
+		smsRegionConfig := authConfig.Get("smsRegionConfig")
+		assert.True(smsRegionConfig.Exists(), "SMS Region Config should exist")
+		disallowedRegions := smsRegionConfig.Get("allowByDefault.disallowedRegions").Array()
+		var regions []string
+		for _, r := range disallowedRegions {
+			regions = append(regions, r.String())
+		}
+		assert.ElementsMatch([]string{"AC", "AD"}, regions, "Disallowed regions should match")
+
 		// 3. Verify Social Identity Providers
 		idpConfigs := firebase_util.GetIdpConfigs(t, projectID, token)
 

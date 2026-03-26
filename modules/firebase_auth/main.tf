@@ -48,6 +48,24 @@ resource "google_identity_platform_config" "auth" {
   }
 
   autodelete_anonymous_users = true
+
+  dynamic "sms_region_config" {
+    for_each = var.auth_config.sms_region_config != null ? [var.auth_config.sms_region_config] : []
+    content {
+      dynamic "allow_by_default" {
+        for_each = sms_region_config.value.allow_by_default != null ? [sms_region_config.value.allow_by_default] : []
+        content {
+          disallowed_regions = allow_by_default.value.disallowed_regions
+        }
+      }
+      dynamic "allowlist_only" {
+        for_each = sms_region_config.value.allowlist != null ? [sms_region_config.value.allowlist] : []
+        content {
+          allowed_regions = allowlist.value.allowed_regions
+        }
+      }
+    }
+  }
 }
 
 # Google Provider

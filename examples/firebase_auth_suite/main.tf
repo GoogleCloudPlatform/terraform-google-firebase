@@ -25,6 +25,11 @@ module "auth_core" {
     anonymous_enabled      = true
     allow_duplicate_emails = false
     authorized_domains     = ["example.com", "another-domain.com"]
+    sms_region_config = {
+      allow_by_default = {
+        disallowed_regions = ["AC", "AD"]
+      }
+    }
   }
 
   auth_providers = {

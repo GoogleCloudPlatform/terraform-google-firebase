@@ -35,6 +35,14 @@ variable "auth_config" {
     phone_enabled           = optional(bool, false)
     test_phone_numbers      = optional(map(string), {})
     authorized_domains      = optional(list(string), ["localhost"])
+    sms_region_config = optional(object({
+      allow_by_default = optional(object({
+        disallowed_regions = optional(list(string))
+      }))
+      allowlist = optional(object({
+        allowed_regions = optional(list(string))
+      }))
+    }))
   })
   default = {}
 }

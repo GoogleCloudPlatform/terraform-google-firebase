@@ -53,6 +53,24 @@ spec:
             authorized_domains:
               name: authorized_domains
               title: Authorized Domains
+            sms_region_config:
+              name: sms_region_config
+              title: SMS Region Config
+              properties:
+                allow_by_default:
+                  name: allow_by_default
+                  title: Allow By Default
+                  properties:
+                    disallowed_regions:
+                      name: disallowed_regions
+                      title: Disallowed Regions
+                allowlist:
+                  name: allowlist
+                  title: Allow List
+                  properties:
+                    allowed_regions:
+                      name: allowed_regions
+                      title: Allowed Regions
         auth_providers:
           name: auth_providers
           title: Auth Providers
