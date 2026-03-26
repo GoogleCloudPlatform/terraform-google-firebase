@@ -16,31 +16,38 @@
 locals {
   per_module_services = {
     firebase_ai_logic_core = [
+      "apikeys.googleapis.com",
       "firebase.googleapis.com",
       "firebasevertexai.googleapis.com",
-      "apikeys.googleapis.com",
+      "serviceusage.googleapis.com"
     ]
     firebase_ai_logic_prompt_template = [
       "firebase.googleapis.com",
       "firebasevertexai.googleapis.com",
+      "serviceusage.googleapis.com",
       "storage.googleapis.com"
     ]
     firebase_app_check = [
-      "firebaseappcheck.googleapis.com"
+      "firebaseappcheck.googleapis.com",
+      "serviceusage.googleapis.com"
     ]
     firebase_app_hosting = [
       "firebaseapphosting.googleapis.com",
-      "iam.googleapis.com"
+      "iam.googleapis.com",
+      "serviceusage.googleapis.com"
     ]
     firebase_auth = [
-      "identitytoolkit.googleapis.com"
+      "identitytoolkit.googleapis.com",
+      "serviceusage.googleapis.com"
     ]
     firebase_multi_platform_application = [
-      "firebase.googleapis.com"
+      "firebase.googleapis.com",
+      "serviceusage.googleapis.com"
     ]
     firestore_rules = [
       "firestore.googleapis.com",
-      "firebaserules.googleapis.com"
+      "firebaserules.googleapis.com",
+      "serviceusage.googleapis.com"
     ]
   }
 }

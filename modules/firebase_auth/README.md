@@ -41,7 +41,6 @@ module "firebase_auth" {
 | multi\_tenant | Configuration related to multi-tenant functionality. | <pre>object({<br>    allow_tenant_creation   = optional(bool)<br>    default_tenant_location = optional(string)<br>  })</pre> | `null` | no |
 | project\_id | The GCP project ID to initialize Firebase Auth in. | `string` | n/a | yes |
 | quota | Configuration related to quotas. | <pre>object({<br>    sign_up_quota_config = optional(object({<br>      quota          = optional(number)<br>      start_time     = optional(string)<br>      quota_duration = optional(string)<br>    }))<br>  })</pre> | `null` | no |
-| sms\_region\_config | Configures the regions where users are allowed to send verification SMS. | <pre>object({<br>    allowlist_only = optional(object({<br>      allowed_regions = list(string)<br>    }))<br>  })</pre> | `null` | no |
 
 ## Outputs
 

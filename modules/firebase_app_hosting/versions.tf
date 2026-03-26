@@ -34,4 +34,12 @@ terraform {
       version = ">= 3.0"
     }
   }
+
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_app_hosting/v0.1.3"
+  }
+  provider_meta "google-beta" {
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_app_hosting/v0.1.3"
+  }
 }
+
