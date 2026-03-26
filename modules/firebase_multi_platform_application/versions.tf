@@ -28,10 +28,10 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-firebase:firebase_multi_platform_application/v0.1.3"
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_multi_platform_application/v0.2.0"
   }
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-firebase:firebase_multi_platform_application/v0.1.3"
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_multi_platform_application/v0.2.0"
   }
 }
 
