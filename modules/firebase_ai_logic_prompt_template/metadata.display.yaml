@@ -39,6 +39,9 @@ spec:
         location:
           name: location
           title: Location
+          enumValueLabels:
+            - label: global
+              value: global
         project_id:
           name: project_id
           title: Project ID
