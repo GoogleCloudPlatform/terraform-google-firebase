@@ -34,10 +34,16 @@ module "auth_core" {
 
   autodelete_anonymous_users = false
 
+  sms_region_config = {
+    allowlist_only = {
+      allowed_regions = ["US", "CA"]
+    }
+  }
+
   blocking_functions = {
     triggers = [{
       event_type   = "beforeSignIn"
-      function_uri = "https://us-east1-\${var.project_id}.cloudfunctions.net/beforeSignIn"
+      function_uri = "https://us-east1-${var.project_id}.cloudfunctions.net/beforeSignIn"
     }]
     forward_inbound_credentials = {
       id_token     = true
