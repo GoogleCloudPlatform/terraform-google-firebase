@@ -73,8 +73,4 @@ resource "google_firebase_ai_logic_config" "default" {
     mode          = var.telemetry_mode
     sampling_rate = var.telemetry_sampling_rate
   }
-
-  lifecycle {
-    ignore_changes = [traffic_filter]
-  }
 }
