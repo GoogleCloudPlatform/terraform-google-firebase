@@ -161,6 +161,8 @@ spec:
         type:
           - list
           - string
+      - name: project_id
+        description: The project ID.
   requirements:
     roles:
       - level: Project

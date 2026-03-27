@@ -85,6 +85,8 @@ spec:
         description: The name of the App Hosting backend
       - name: build_name
         description: The name of the App Hosting build
+      - name: project_id
+        description: The project ID
       - name: service_account_email
         description: The email of the service account used by the App Hosting backend
   requirements:

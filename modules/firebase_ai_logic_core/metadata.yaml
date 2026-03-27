@@ -73,6 +73,8 @@ spec:
       - name: config_name
         description: The name of the AI Logic configuration.
         type: string
+      - name: project_id
+        description: The project ID.
   requirements:
     roles:
       - level: Project
