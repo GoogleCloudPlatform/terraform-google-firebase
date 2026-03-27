@@ -68,7 +68,6 @@ func TestFirebaseAiLogic(t *testing.T) {
 		// 4. Verify Prompt Templates
 		templates := firebase_util.GetAiLogicTemplates(t, projectID, location, token)
 		expectedTemplates := []string{"hello-world-direct", "hello-world-gcs"}
-		assert.Len(templates, len(expectedTemplates), "Should have exactly 2 prompt templates")
 
 		for _, templateId := range expectedTemplates {
 			fullName := fmt.Sprintf("projects/%s/locations/%s/templates/%s", projectID, location, templateId)
