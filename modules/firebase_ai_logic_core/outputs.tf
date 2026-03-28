@@ -21,5 +21,5 @@ output "config_name" {
 
 output "project_id" {
   description = "The project ID."
-  value       = var.project_id
+  value       = google_firebase_ai_logic_config.default.project
 }

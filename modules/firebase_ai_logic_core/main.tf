@@ -73,4 +73,11 @@ resource "google_firebase_ai_logic_config" "default" {
     mode          = var.telemetry_mode
     sampling_rate = var.telemetry_sampling_rate
   }
+
+  lifecycle {
+    ignore_changes = [
+      # The API returns an empty block by default, causing a persistent diff
+      traffic_filter,
+    ]
+  }
 }

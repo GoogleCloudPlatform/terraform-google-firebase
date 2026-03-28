@@ -53,6 +53,12 @@ spec:
         description: The project ID to deploy to.
         varType: string
         required: true
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_multi_platform_application
+              version: ">= 0.2.0"
+            spec:
+              outputExpr: project_id
       - name: api_config
         description: Configuration for which AI APIs to enable for Firebase AI Logic.
         varType: |-
@@ -73,6 +79,8 @@ spec:
       - name: config_name
         description: The name of the AI Logic configuration.
         type: string
+      - name: project_id
+        description: The project ID.
   requirements:
     roles:
       - level: Project

@@ -55,14 +55,30 @@ func TestFirebaseMultiPlatformApp(t *testing.T) {
 		assert.NoError(err, "Failed to get access token")
 		token := strings.TrimSpace(string(out))
 
-		verifyApp := func(appType firebase_util.AppType) {
-			results := firebase_util.GetAppList(t, projectID, appType, token)
-			assert.Len(results, 1, fmt.Sprintf("Should have exactly one %s registered", appType.Label()))
-		}
+		// 1. Verify Web App
+		firebase_util.GetAppByDisplayName(t, projectID, firebase_util.Web, "Canonical Example Web App", token)
 
-		verifyApp(firebase_util.Web)
-		verifyApp(firebase_util.Android)
-		verifyApp(firebase_util.IOS)
+		// 2. Verify Android App by package name
+		androidApps := firebase_util.GetAppList(t, projectID, firebase_util.Android, token)
+		foundAndroid := false
+		for _, app := range androidApps {
+			if app.Get("packageName").String() == "com.example.canonical" {
+				foundAndroid = true
+				break
+			}
+		}
+		assert.True(foundAndroid, "Android App with package name 'com.example.canonical' not found")
+
+		// 3. Verify iOS App by bundle ID
+		iosApps := firebase_util.GetAppList(t, projectID, firebase_util.IOS, token)
+		foundIos := false
+		for _, app := range iosApps {
+			if app.Get("bundleId").String() == "com.example.canonical" {
+				foundIos = true
+				break
+			}
+		}
+		assert.True(foundIos, "iOS App with bundle ID 'com.example.canonical' not found")
 	})
 
 	firebaseTest.Test()

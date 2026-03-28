@@ -142,6 +142,8 @@ spec:
       - name: apple_config
         description: The GoogleService-Info.plist content for the Apple App.
         type: string
+      - name: project_id
+        description: The project ID.
       - name: web_config
         description: The configuration snippet for the Firebase Web App.
         type:
