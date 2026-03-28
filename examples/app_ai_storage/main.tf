@@ -76,9 +76,7 @@ module "ai_logic_template" {
   template_content = {
     gcs_object_source = {
       bucket = google_storage_bucket.prompts.name
-      name   = google_storage_bucket_object.prompt_file.name
+      name   = google_storage_bucket_object.prompt_file.output_name
     }
   }
-
-  depends_on = [module.ai_logic_core, module.multi_platform_app]
 }
