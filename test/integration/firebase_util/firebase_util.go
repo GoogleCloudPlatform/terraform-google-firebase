@@ -75,6 +75,18 @@ func GetAppList(t *testing.T, projectId string, appType AppType, token string) [
 	return gjson.ParseBytes(body).Get("apps").Array()
 }
 
+// GetAppByDisplayName searches for a specific app by its display name in the returned list.
+func GetAppByDisplayName(t *testing.T, projectId string, appType AppType, displayName string, token string) gjson.Result {
+	apps := GetAppList(t, projectId, appType, token)
+	for _, app := range apps {
+		if app.Get("displayName").String() == displayName {
+			return app
+		}
+	}
+	t.Fatalf("App with displayName '%s' not found", displayName)
+	return gjson.Result{}
+}
+
 // GetAuthConfig retrieves the project-level Identity Platform configuration.
 func GetAuthConfig(t *testing.T, projectId string, token string) gjson.Result {
 	url := fmt.Sprintf("https://identitytoolkit.googleapis.com/admin/v2/projects/%s/config", projectId)

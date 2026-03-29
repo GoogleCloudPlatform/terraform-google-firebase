@@ -53,6 +53,12 @@ spec:
         description: The GCP project ID to initialize Firebase Auth in.
         varType: string
         required: true
+        connections:
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-firebase//modules/firebase_multi_platform_application
+              version: ">= 0.2.0"
+            spec:
+              outputExpr: project_id
       - name: enable_auth_management
         description: Allows skipping config creation.
         varType: bool
@@ -161,6 +167,8 @@ spec:
         type:
           - list
           - string
+      - name: project_id
+        description: The project ID.
   requirements:
     roles:
       - level: Project

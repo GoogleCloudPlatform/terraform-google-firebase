@@ -57,15 +57,9 @@ func TestAppAndAppCheck(t *testing.T) {
 		assert.NoError(err, "Failed to get access token")
 		token := strings.TrimSpace(string(out))
 
-		verifyApp := func(appType firebase_util.AppType) string {
-			results := firebase_util.GetAppList(t, projectID, appType, token)
-			assert.Len(results, 1, fmt.Sprintf("Should have exactly one %s registered", appType.Label()))
-			return results[0].Get("appId").String()
-		}
-
-		webAppId := verifyApp(firebase_util.Web)
-		androidAppId := verifyApp(firebase_util.Android)
-		iosAppId := verifyApp(firebase_util.IOS)
+		webAppId := firebase_util.GetAppByDisplayName(t, projectID, firebase_util.Web, "App Check Web App", token).Get("appId").String()
+		androidAppId := firebase_util.GetAppByDisplayName(t, projectID, firebase_util.Android, "App Check Android App", token).Get("appId").String()
+		iosAppId := firebase_util.GetAppByDisplayName(t, projectID, firebase_util.IOS, "App Check iOS App", token).Get("appId").String()
 
 		// 3. Verify the app_check_bundle output size & enabled_app_ids
 		enabledAppIds := terraform.OutputList(t, firebaseTest.GetTFOptions(), "enabled_app_ids")

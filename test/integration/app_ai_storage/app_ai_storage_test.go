@@ -60,13 +60,7 @@ func TestAppAiStorage(t *testing.T) {
 		assert.NoError(err, "Failed to get access token")
 		token := strings.TrimSpace(string(out))
 
-		verifyApp := func(appType firebase_util.AppType) string {
-			results := firebase_util.GetAppList(t, projectID, appType, token)
-			assert.Len(results, 1, fmt.Sprintf("Should have exactly one %s registered", appType.Label()))
-			return results[0].Get("appId").String()
-		}
-
-		verifyApp(firebase_util.Web)
+		firebase_util.GetAppByDisplayName(t, projectID, firebase_util.Web, "AI Storage Web App", token)
 
 		// 3. Verify Cloud Storage Object
 		storageOut, err := exec.Command("gcloud", "storage", "cat", fmt.Sprintf("gs://%s/%s", bucketName, objectName)).Output()
