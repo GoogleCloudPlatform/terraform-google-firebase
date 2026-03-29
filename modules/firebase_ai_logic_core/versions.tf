@@ -32,10 +32,10 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_core/v0.2.0"
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_core/v0.2.1"
   }
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_core/v0.2.0"
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_core/v0.2.1"
   }
 }
 
