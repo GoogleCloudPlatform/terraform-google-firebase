@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.2.1](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.1) - 2026-03-29
+
+### Bug Fixes
+
+- Add enumValueLabels for location in metadata display
+- Fix example tests for auth and metadata.yaml outputs
+
 ## [0.2.0](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.0) - 2026-03-26
 
 ### Bug Fixes
