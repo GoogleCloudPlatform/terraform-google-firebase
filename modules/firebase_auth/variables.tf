@@ -20,7 +20,7 @@ variable "project_id" {
 }
 
 variable "enable_auth_management" {
-  description = "Allows skipping config creation."
+  description = "Whether Terraform should manage the base Identity Platform configuration. Set to false if the auth config is managed externally or via the Firebase Console."
   type        = bool
   default     = true
 }
