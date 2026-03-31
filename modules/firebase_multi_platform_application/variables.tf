@@ -64,10 +64,6 @@ variable "apps" {
   })
   default = {}
 
-  validation {
-    condition     = try(var.apps.web_app.app_check_config.enable, null) != true || try(var.apps.web_app.app_check_config.recaptcha_site_key, null) != null
-    error_message = "If App Check is enabled for the Web App, 'recaptcha_site_key' must be provided."
-  }
 
   validation {
     condition     = try(var.apps.android_app.app_check_config.enable, null) != true || try(length(var.apps.android_app.sha256_hashes), 0) > 0
