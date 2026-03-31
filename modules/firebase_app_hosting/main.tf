@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+locals {
+  service_account = var.service_account != null ? var.service_account : google_service_account.service_account[0].email
+}
+
 resource "google_firebase_app_hosting_backend" "backend" {
   project = var.project_id
 
@@ -21,10 +25,12 @@ resource "google_firebase_app_hosting_backend" "backend" {
   backend_id       = var.backend_id
   app_id           = var.web_app_id
   serving_locality = "GLOBAL_ACCESS"
-  service_account  = google_service_account.service_account.email
+  service_account  = local.service_account
+  environment      = var.environment
 }
 
 resource "google_service_account" "service_account" {
+  count   = var.service_account == null ? 1 : 0
   project = var.project_id
 
   # Must be firebase-app-hosting-compute
@@ -40,7 +46,7 @@ resource "google_project_iam_member" "app_hosting_sa_runner" {
 
   # For App Hosting
   role   = "roles/firebaseapphosting.computeRunner"
-  member = google_service_account.service_account.member
+  member = "serviceAccount:${local.service_account}"
 }
 
 resource "random_string" "build_id" {

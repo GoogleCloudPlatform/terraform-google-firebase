@@ -35,7 +35,16 @@ module "app_hosting" {
   backend_id = "example-backend"
   web_app_id = module.firebase_app.app_ids[0]
 
+  environment     = "production"
+  service_account = google_service_account.custom_sa.email
+
   build = {
     container_image = "us-docker.pkg.dev/cloudrun/container/hello"
   }
+}
+
+resource "google_service_account" "custom_sa" {
+  project      = var.project_id
+  account_id   = "custom-app-hosting-sa"
+  display_name = "Custom App Hosting Service Account"
 }

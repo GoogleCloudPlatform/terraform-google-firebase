@@ -36,7 +36,7 @@ output "backend_uri" {
 
 output "service_account_email" {
   description = "The email of the service account used by the App Hosting backend"
-  value       = google_service_account.service_account.email
+  value       = local.service_account
 }
 
 output "build_name" {

@@ -44,8 +44,10 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | backend\_id | The ID of the App Hosting backend | `string` | n/a | yes |
 | build | The build configuration for the App Hosting backend | <pre>object({<br>    container_image = string<br>  })</pre> | n/a | yes |
+| environment | The environment for the App Hosting backend | `string` | `null` | no |
 | location | The location of the App Hosting backend | `string` | n/a | yes |
 | project\_id | The project ID to deploy to | `string` | n/a | yes |
+| service\_account | The service account used by the App Hosting backend | `string` | `null` | no |
 | web\_app\_id | The ID of the Firebase Web App to associate with the backend | `string` | n/a | yes |
 
 ## Outputs

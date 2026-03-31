@@ -34,12 +34,18 @@ spec:
         build:
           name: build
           title: Build
+        environment:
+          name: environment
+          title: Environment
         location:
           name: location
           title: Location
         project_id:
           name: project_id
           title: Project Id
+        service_account:
+          name: service_account
+          title: Service Account
         web_app_id:
           name: web_app_id
           title: Web App Id
