@@ -29,6 +29,11 @@ output "backend_name" {
   value       = module.app_hosting.backend_name
 }
 
+output "backend_uri" {
+  description = "The primary URI to communicate with the backend."
+  value       = module.app_hosting.backend_uri
+}
+
 output "service_account_email" {
   description = "The email of the service account used by the App Hosting backend"
   value       = module.app_hosting.service_account_email
