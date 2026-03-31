@@ -65,6 +65,7 @@ module "ai_logic_core" {
     vertex_ai        = true
     gemini_developer = true
   }
+  telemetry_mode = "ALL"
 }
 
 module "ai_logic_template" {
