@@ -89,6 +89,8 @@ spec:
         description: The ID of the App Hosting backend
       - name: backend_name
         description: The name of the App Hosting backend
+      - name: backend_uri
+        description: The primary URI to communicate with the backend.
       - name: build_name
         description: The name of the App Hosting build
       - name: project_id
