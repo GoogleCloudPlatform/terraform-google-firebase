@@ -41,7 +41,7 @@ func TestFirebaseAiLogic(t *testing.T) {
 		// 1. Verify Enabled APIs
 		services := gcloud.Run(t, "services list", gcloud.WithCommonArgs([]string{
 			"--project", projectID,
-			"--filter", "config.name:(firebase.googleapis.com OR firebasevertexai.googleapis.com OR generativelanguage.googleapis.com OR aiplatform.googleapis.com)",
+			"--filter", "config.name:(firebase.googleapis.com OR firebasevertexai.googleapis.com OR generativelanguage.googleapis.com OR aiplatform.googleapis.com OR logging.googleapis.com OR monitoring.googleapis.com OR clouderrorreporting.googleapis.com)",
 			"--format", "json",
 		})).Array()
 		expectedAPIs := []string{
@@ -49,6 +49,9 @@ func TestFirebaseAiLogic(t *testing.T) {
 			"firebasevertexai.googleapis.com",
 			"generativelanguage.googleapis.com",
 			"aiplatform.googleapis.com",
+			"logging.googleapis.com",
+			"monitoring.googleapis.com",
+			"clouderrorreporting.googleapis.com",
 		}
 		for _, api := range expectedAPIs {
 			match := utils.GetFirstMatchResult(t, services, "config.name", api)
@@ -62,7 +65,7 @@ func TestFirebaseAiLogic(t *testing.T) {
 
 		// 3. Verify AI Logic Config
 		config := firebase_util.GetAiLogicConfig(t, projectID, location, token)
-		assert.Equal("NONE", config.Get("telemetryConfig.mode").String(), "Telemetry mode should be NONE")
+		assert.Equal("ALL", config.Get("telemetryConfig.mode").String(), "Telemetry mode should be ALL")
 		assert.Equal(float64(1), config.Get("telemetryConfig.samplingRate").Float(), "Telemetry sampling rate should be 1")
 
 		// 4. Verify Prompt Templates
