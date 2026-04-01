@@ -83,6 +83,12 @@ spec:
       - name: service_account
         description: The service account used by the App Hosting backend
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-service-accounts//modules/simple-sa
+              version: ">= 4.7.0"
+            spec:
+              outputExpr: email
       - name: build
         description: The build configuration for the App Hosting backend
         varType: |-
