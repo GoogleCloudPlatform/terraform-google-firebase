@@ -8,6 +8,22 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.2.2](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.2) - 2026-04-01
+
+### Bug Fixes
+
+- Rephrase Firebase web app API key to be more explicit
+- Remove recaptcha_site_key requirement for Web App Check
+- Enable telemetry APIs for AI Logic
+
+### Documentation
+
+- Clarity improvements for enable_auth_management variable
+
+### Features
+
+- Add `backend_uri`, `service_account`, and `environment` inputs to Firebase App Hosting
+
 ## [0.2.1](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.1) - 2026-03-29
 
 ### Bug Fixes
