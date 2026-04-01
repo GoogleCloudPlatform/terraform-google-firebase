@@ -32,6 +32,22 @@ resource "google_project_service" "gemini" {
   disable_on_destroy = false
 }
 
+locals {
+  telemetry_apis = var.telemetry_mode == "ALL" ? [
+    "logging.googleapis.com",
+    "monitoring.googleapis.com",
+    "clouderrorreporting.googleapis.com"
+  ] : []
+}
+
+resource "google_project_service" "telemetry" {
+  for_each           = toset(local.telemetry_apis)
+  provider           = google-beta
+  project            = var.project_id
+  service            = each.key
+  disable_on_destroy = false
+}
+
 resource "random_id" "gemini_key_suffix" {
   count       = var.api_config.gemini_developer ? 1 : 0
   byte_length = 4
