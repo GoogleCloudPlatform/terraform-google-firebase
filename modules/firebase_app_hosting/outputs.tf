@@ -29,9 +29,14 @@ output "backend_name" {
   value       = google_firebase_app_hosting_backend.backend.name
 }
 
+output "backend_uri" {
+  description = "The primary URI to communicate with the backend."
+  value       = google_firebase_app_hosting_backend.backend.uri
+}
+
 output "service_account_email" {
   description = "The email of the service account used by the App Hosting backend"
-  value       = google_service_account.service_account.email
+  value       = local.service_account
 }
 
 output "build_name" {

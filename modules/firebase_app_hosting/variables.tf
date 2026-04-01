@@ -34,6 +34,18 @@ variable "web_app_id" {
   type        = string
 }
 
+variable "environment" {
+  description = "The environment for the App Hosting backend"
+  type        = string
+  default     = null
+}
+
+variable "service_account" {
+  description = "The service account used by the App Hosting backend"
+  type        = string
+  default     = null
+}
+
 variable "build" {
   description = "The build configuration for the App Hosting backend"
   type = object({

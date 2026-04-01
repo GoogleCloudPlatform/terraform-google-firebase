@@ -38,6 +38,7 @@ func TestFirebaseAppHosting(t *testing.T) {
 		projectID := firebaseTest.GetStringOutput("project_id")
 		backendID := firebaseTest.GetStringOutput("backend_id")
 		backendName := firebaseTest.GetStringOutput("backend_name")
+		backendURI := firebaseTest.GetStringOutput("backend_uri")
 		buildName := firebaseTest.GetStringOutput("build_name")
 
 		// 1. Verify Enabled APIs
@@ -62,7 +63,10 @@ func TestFirebaseAppHosting(t *testing.T) {
 		// Verify Backend
 		backend := firebase_util.GetAppHostingBackend(t, projectID, "us-central1", backendID, token)
 		assert.Equal(backendName, backend.Get("name").String(), "Backend name should match")
+		assert.Equal(backendURI, backend.Get("uri").String(), "Backend URI should match")
 		assert.Equal("GLOBAL_ACCESS", backend.Get("servingLocality").String(), "Serving locality should be GLOBAL_ACCESS")
+		assert.Equal("production", backend.Get("environment").String(), "Environment should be production")
+		assert.Equal(firebaseTest.GetStringOutput("service_account_email"), backend.Get("serviceAccount").String(), "Service account should match")
 
 		// Verify Build
 		builds := firebase_util.GetAppHostingBuilds(t, projectID, "us-central1", backendID, token)

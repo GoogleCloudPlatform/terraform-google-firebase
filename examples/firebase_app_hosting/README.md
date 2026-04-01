@@ -31,6 +31,7 @@ terraform destroy
 |------|-------------|
 | backend\_id | The ID of the App Hosting backend |
 | backend\_name | The name of the App Hosting backend |
+| backend\_uri | The primary URI to communicate with the backend. |
 | build\_name | The name of the App Hosting build |
 | project\_id | The project ID. |
 | service\_account\_email | The email of the service account used by the App Hosting backend |
