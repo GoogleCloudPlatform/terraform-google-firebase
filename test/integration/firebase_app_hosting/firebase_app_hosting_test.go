@@ -89,7 +89,7 @@ func TestFirebaseAppHosting(t *testing.T) {
 		assert.NotEmpty(defaultDomain.Get("name").String(), "Default domain should exist")
 
 		// 3. Verify New Outputs
-		customDomainConfigs := firebaseTest.GetMapOutput("custom_domain_configs")
+		customDomainConfigs := firebaseTest.GetStringOutput("custom_domain_configs")
 		assert.NotEmpty(customDomainConfigs, "Custom domain configs should not be empty")
 		assert.Contains(customDomainConfigs, "app-hosting.example.com", "Custom domain configs should contain the example domain")
 	})
