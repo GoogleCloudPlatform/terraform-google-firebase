@@ -78,6 +78,20 @@ func TestFirebaseAppHosting(t *testing.T) {
 			}
 		}
 		assert.True(foundBuild, "Build should exist in the backend")
+
+		// Verify Custom Domains
+		customDomains := firebase_util.GetAppHostingDomains(t, projectID, "us-central1", backendID, token)
+		assert.Len(customDomains, 1, "Should have 1 custom domain")
+		assert.Contains(customDomains[0].Get("name").String(), "app-hosting.example.com", "Custom domain name should match")
+
+		// Verify Default Domain
+		defaultDomain := firebase_util.GetAppHostingDefaultDomain(t, projectID, "us-central1", backendID, token)
+		assert.NotEmpty(defaultDomain.Get("name").String(), "Default domain should exist")
+
+		// 3. Verify New Outputs
+		customDomainConfigs := firebaseTest.GetMapOutput("custom_domain_configs")
+		assert.NotEmpty(customDomainConfigs, "Custom domain configs should not be empty")
+		assert.Contains(customDomainConfigs, "app-hosting.example.com", "Custom domain configs should contain the example domain")
 	})
 
 	firebaseTest.Test()

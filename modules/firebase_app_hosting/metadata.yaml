@@ -96,6 +96,14 @@ spec:
               container_image = string
             })
         required: true
+      - name: custom_domains
+        description: A list of custom domains to associate with the backend
+        varType: list(string)
+        defaultValue: []
+      - name: enable_default_domain
+        description: Whether to enable the default domain for the backend
+        varType: bool
+        defaultValue: true
     outputs:
       - name: backend_id
         description: The ID of the App Hosting backend
@@ -105,6 +113,12 @@ spec:
         description: The primary URI to communicate with the backend.
       - name: build_name
         description: The name of the App Hosting build
+      - name: custom_domain_configs
+        description: Status and DNS configurations for the custom domains
+      - name: custom_domain_names
+        description: The names of the custom domains associated with the backend
+      - name: default_domain_name
+        description: The name of the default domain associated with the backend
       - name: project_id
         description: The project ID
       - name: service_account_email

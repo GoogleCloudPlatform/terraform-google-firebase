@@ -33,6 +33,9 @@ terraform destroy
 | backend\_name | The name of the App Hosting backend |
 | backend\_uri | The primary URI to communicate with the backend. |
 | build\_name | The name of the App Hosting build |
+| custom\_domain\_configs | Status and DNS configurations for the custom domains |
+| custom\_domain\_names | The names of the custom domains associated with the backend |
+| default\_domain\_name | The name of the default domain associated with the backend |
 | project\_id | The project ID. |
 | service\_account\_email | The email of the service account used by the App Hosting backend |
 

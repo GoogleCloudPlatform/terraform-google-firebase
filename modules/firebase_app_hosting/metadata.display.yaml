@@ -34,6 +34,12 @@ spec:
         build:
           name: build
           title: Build
+        custom_domains:
+          name: custom_domains
+          title: Custom Domains
+        enable_default_domain:
+          name: enable_default_domain
+          title: Enable Default Domain
         environment:
           name: environment
           title: Environment

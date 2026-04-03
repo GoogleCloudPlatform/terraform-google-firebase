@@ -99,3 +99,21 @@ resource "google_firebase_app_hosting_traffic" "traffic" {
     }
   }
 }
+
+resource "google_firebase_app_hosting_domain" "custom_domain" {
+  provider  = google-beta
+  for_each  = toset(var.custom_domains)
+  project   = google_firebase_app_hosting_backend.backend.project
+  location  = google_firebase_app_hosting_backend.backend.location
+  backend   = google_firebase_app_hosting_backend.backend.backend_id
+  domain_id = each.key
+}
+
+resource "google_firebase_app_hosting_default_domain" "default" {
+  count     = var.enable_default_domain ? 1 : 0
+  provider  = google-beta
+  project   = google_firebase_app_hosting_backend.backend.project
+  location  = google_firebase_app_hosting_backend.backend.location
+  backend   = google_firebase_app_hosting_backend.backend.backend_id
+  domain_id = "${google_firebase_app_hosting_backend.backend.backend_id}--${google_firebase_app_hosting_backend.backend.project}.${google_firebase_app_hosting_backend.backend.location}.hosted.app"
+}
