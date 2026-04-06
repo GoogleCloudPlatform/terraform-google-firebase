@@ -323,7 +323,8 @@ func GetAppHostingDomains(t *testing.T, projectId string, location string, backe
 
 // GetAppHostingDefaultDomain retrieves the default domain for an App Hosting backend.
 func GetAppHostingDefaultDomain(t *testing.T, projectId string, location string, backendId string, token string) gjson.Result {
-	url := fmt.Sprintf("https://firebaseapphosting.googleapis.com/v1beta/projects/%s/locations/%s/backends/%s/defaultDomain", projectId, location, backendId)
+	domainId := fmt.Sprintf("%s--%s.%s.hosted.app", backendId, projectId, location)
+	url := fmt.Sprintf("https://firebaseapphosting.googleapis.com/v1beta/projects/%s/locations/%s/backends/%s/domains/%s", projectId, location, backendId, domainId)
 	t.Logf("Fetching App Hosting default domain from: %s", url)
 
 	client := &http.Client{}
