@@ -43,3 +43,18 @@ output "build_name" {
   description = "The name of the App Hosting build"
   value       = module.app_hosting.build_name
 }
+
+output "custom_domain_names" {
+  description = "The names of the custom domains associated with the backend"
+  value       = module.app_hosting.custom_domain_names
+}
+
+output "custom_domain_configs" {
+  description = "Status and DNS configurations for the custom domains"
+  value       = module.app_hosting.custom_domain_configs
+}
+
+output "default_domain_name" {
+  description = "The name of the default domain associated with the backend"
+  value       = module.app_hosting.default_domain_name
+}

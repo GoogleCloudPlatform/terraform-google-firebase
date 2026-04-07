@@ -295,6 +295,62 @@ func GetAppHostingBuilds(t *testing.T, projectId string, location string, backen
 	return gjson.ParseBytes(body).Get("builds").Array()
 }
 
+// GetAppHostingDomains retrieves the list of custom domains for an App Hosting backend.
+func GetAppHostingDomains(t *testing.T, projectId string, location string, backendId string, token string) []gjson.Result {
+	url := fmt.Sprintf("https://firebaseapphosting.googleapis.com/v1beta/projects/%s/locations/%s/backends/%s/domains", projectId, location, backendId)
+	t.Logf("Fetching App Hosting domains from: %s", url)
+
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", url, nil)
+	assert.NoError(t, err, "Failed to create HTTP request")
+
+	req.Header.Add("Authorization", "Bearer "+token)
+	req.Header.Add("X-Goog-User-Project", projectId)
+
+	resp, err := client.Do(req)
+	assert.NoError(t, err, "HTTP request failed")
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	assert.NoError(t, err, "Failed to read response body")
+
+	if resp.StatusCode != http.StatusOK {
+		t.Fatalf("API request failed with status %d: %s", resp.StatusCode, string(body))
+	}
+
+	return gjson.ParseBytes(body).Get("domains").Array()
+}
+
+// GetAppHostingDefaultDomain retrieves the default domain for an App Hosting backend.
+func GetAppHostingDefaultDomain(t *testing.T, projectId string, location string, backendId string, token string) gjson.Result {
+	domainId := fmt.Sprintf("%s--%s.%s.hosted.app", backendId, projectId, location)
+	url := fmt.Sprintf("https://firebaseapphosting.googleapis.com/v1beta/projects/%s/locations/%s/backends/%s/domains/%s", projectId, location, backendId, domainId)
+	t.Logf("Fetching App Hosting default domain from: %s", url)
+
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", url, nil)
+	assert.NoError(t, err, "Failed to create HTTP request")
+
+	req.Header.Add("Authorization", "Bearer "+token)
+	req.Header.Add("X-Goog-User-Project", projectId)
+
+	resp, err := client.Do(req)
+	assert.NoError(t, err, "HTTP request failed")
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	assert.NoError(t, err, "Failed to read response body")
+
+	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusNotFound {
+			return gjson.Result{}
+		}
+		t.Fatalf("API request failed with status %d: %s", resp.StatusCode, string(body))
+	}
+
+	return gjson.ParseBytes(body)
+}
+
 // GetAppCheckConfig fetches App Check config to verify attestation has been attached.
 func GetAppCheckConfig(t *testing.T, projectID string, appID string, configType string, token string) gjson.Result {
 	url := fmt.Sprintf("https://firebaseappcheck.googleapis.com/v1/projects/%s/apps/%s/%s", projectID, appID, configType)

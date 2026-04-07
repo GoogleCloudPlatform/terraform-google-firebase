@@ -52,3 +52,15 @@ variable "build" {
     container_image = string
   })
 }
+
+variable "custom_domains" {
+  description = "A list of custom domains to associate with the backend"
+  type        = list(string)
+  default     = []
+}
+
+variable "enable_default_domain" {
+  description = "Whether to enable the default domain for the backend"
+  type        = bool
+  default     = true
+}

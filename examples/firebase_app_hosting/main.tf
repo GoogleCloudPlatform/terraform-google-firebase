@@ -41,6 +41,9 @@ module "app_hosting" {
   build = {
     container_image = "us-docker.pkg.dev/cloudrun/container/hello"
   }
+
+  custom_domains        = ["app-hosting.example.com"]
+  enable_default_domain = true
 }
 
 resource "google_service_account" "custom_sa" {

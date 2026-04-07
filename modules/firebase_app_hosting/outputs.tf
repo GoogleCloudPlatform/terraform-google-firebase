@@ -43,3 +43,21 @@ output "build_name" {
   description = "The name of the App Hosting build"
   value       = google_firebase_app_hosting_build.build.name
 }
+
+output "custom_domain_names" {
+  description = "The names of the custom domains associated with the backend"
+  value       = [for d in google_firebase_app_hosting_domain.custom_domain : d.name]
+}
+
+output "custom_domain_configs" {
+  description = "Status and DNS configurations for the custom domains"
+  value = {
+    for domain_id, domain in google_firebase_app_hosting_domain.custom_domain :
+    domain_id => domain.custom_domain_status
+  }
+}
+
+output "default_domain_name" {
+  description = "The name of the default domain associated with the backend"
+  value       = length(google_firebase_app_hosting_default_domain.default) > 0 ? google_firebase_app_hosting_default_domain.default[0].name : null
+}
