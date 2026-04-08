@@ -28,10 +28,10 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_prompt_template/v0.2.3"
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_prompt_template/v0.3.0"
   }
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_prompt_template/v0.2.3"
+    module_name = "blueprints/terraform/terraform-google-firebase:firebase_ai_logic_prompt_template/v0.3.0"
   }
 }
 

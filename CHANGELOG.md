@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.3.0](https://github.com/GoogleCloudPlatform/terraform-google-firebase/compare/v0.2.2...v0.3.0) (2026-04-08)
+
+
+### Features
+
+* Enable Firebase Hosting API and release v0.2.3 ([#18](https://github.com/GoogleCloudPlatform/terraform-google-firebase/issues/18)) ([d0c4033](https://github.com/GoogleCloudPlatform/terraform-google-firebase/commit/d0c4033c6bd3e4abcd41c4b7516ed8020c59fa18))
+
 ## [0.2.3](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.3) - 2026-04-08
 
 ### Features

@@ -72,7 +72,7 @@ For Firebase Multi-Platform App:
 ```hcl
 module "multi_platform_app" {
   source  = "GoogleCloudPlatform/firebase/google//modules/firebase_multi_platform_application"
-  version = "~> 0.1"
+  version = "~> 0.3"
 
   project_id = var.project_id
 
