@@ -38,6 +38,7 @@ locals {
     ]
     firebase_auth = [
       "identitytoolkit.googleapis.com",
+      "firebasehosting.googleapis.com",
       "serviceusage.googleapis.com"
     ]
     firebase_multi_platform_application = [

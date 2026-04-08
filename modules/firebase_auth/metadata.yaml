@@ -177,6 +177,7 @@ spec:
           - roles/iam.serviceAccountAdmin
           - roles/serviceusage.serviceUsageAdmin
     services:
+      - firebasehosting.googleapis.com
       - identitytoolkit.googleapis.com
       - serviceusage.googleapis.com
     providerVersions:
