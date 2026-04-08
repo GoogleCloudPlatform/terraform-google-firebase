@@ -7,7 +7,7 @@ This module manages Firebase Authentication (Identity Platform) configuration an
 ```hcl
 module "firebase_auth" {
   source  = "GoogleCloudPlatform/firebase-auth/google"
-  version = "~> 0.1"
+  version = "~> 0.3"
 
   project_id = "my-project-id"
 
