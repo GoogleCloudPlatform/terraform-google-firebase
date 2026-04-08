@@ -8,6 +8,12 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.2.3](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.3) - 2026-04-08
+
+### Features
+
+- Add Firebase Hosting to list of enabled APIs for Auth module
+
 ## [0.2.2](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.2) - 2026-04-01
 
 ### Bug Fixes
