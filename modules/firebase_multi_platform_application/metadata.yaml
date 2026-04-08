@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-firebase.git
       sourceType: git
       dir: /modules/firebase_multi_platform_application
-    version: 0.2.2
+    version: 0.2.3
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
