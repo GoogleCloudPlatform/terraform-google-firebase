@@ -26,7 +26,7 @@ provider "google-beta" {
 
 module "ai_logic_core" {
   source     = "GoogleCloudPlatform/firebase/google//modules/firebase_ai_logic_core"
-  version    = "~> 0.1"
+  version    = "~> 0.2"
   project_id = var.project_id
 
   api_config = {
@@ -39,7 +39,7 @@ module "ai_logic_core" {
 
 module "ai_logic_template_direct" {
   source      = "GoogleCloudPlatform/firebase/google//modules/firebase_ai_logic_prompt_template"
-  version     = "~> 0.1"
+  version     = "~> 0.2"
   project_id  = var.project_id
   template_id = "hello-world-direct"
 
@@ -75,7 +75,7 @@ EOT
 
 module "ai_logic_template_gcs" {
   source      = "GoogleCloudPlatform/firebase/google//modules/firebase_ai_logic_prompt_template"
-  version     = "~> 0.1"
+  version     = "~> 0.2"
   project_id  = var.project_id
   template_id = "hello-world-gcs"
 

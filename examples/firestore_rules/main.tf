@@ -35,7 +35,7 @@ resource "google_firestore_database" "database" {
 
 module "firestore_rules" {
   source        = "GoogleCloudPlatform/firebase/google//modules/firestore_rules"
-  version       = "~> 0.1"
+  version       = "~> 0.2"
   project_id    = var.project_id
   database_id   = google_firestore_database.database.name
   rules_content = <<EOT
