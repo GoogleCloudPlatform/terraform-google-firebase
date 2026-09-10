@@ -16,7 +16,7 @@
 
 module "firebase_app" {
   source     = "GoogleCloudPlatform/firebase/google//modules/firebase_multi_platform_application"
-  version    = "~> 0.1"
+  version    = "~> 0.2"
   project_id = var.project_id
 
   apps = {
@@ -28,7 +28,7 @@ module "firebase_app" {
 
 module "app_hosting" {
   source     = "GoogleCloudPlatform/firebase/google//modules/firebase_app_hosting"
-  version    = "~> 0.1"
+  version    = "~> 0.2"
   project_id = var.project_id
 
   location   = "us-central1"

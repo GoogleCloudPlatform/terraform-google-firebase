@@ -46,7 +46,7 @@ EOT
 
 module "multi_platform_app" {
   source     = "GoogleCloudPlatform/firebase/google//modules/firebase_multi_platform_application"
-  version    = "~> 0.1"
+  version    = "~> 0.2"
   project_id = var.project_id
 
   apps = {
@@ -58,7 +58,7 @@ module "multi_platform_app" {
 
 module "ai_logic_core" {
   source     = "GoogleCloudPlatform/firebase/google//modules/firebase_ai_logic_core"
-  version    = "~> 0.1"
+  version    = "~> 0.2"
   project_id = var.project_id
 
   api_config = {
@@ -70,7 +70,7 @@ module "ai_logic_core" {
 
 module "ai_logic_template" {
   source      = "GoogleCloudPlatform/firebase/google//modules/firebase_ai_logic_prompt_template"
-  version     = "~> 0.1"
+  version     = "~> 0.2"
   project_id  = var.project_id
   template_id = "complex-cuj-gcs-template"
 

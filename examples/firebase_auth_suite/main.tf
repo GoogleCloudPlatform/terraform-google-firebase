@@ -16,7 +16,7 @@
 
 module "auth_core" {
   source  = "GoogleCloudPlatform/firebase/google//modules/firebase_auth"
-  version = "~> 0.1"
+  version = "~> 0.2"
 
   project_id = var.project_id
 
