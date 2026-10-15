@@ -126,6 +126,7 @@ spec:
                 refresh_token = optional(bool)
               }))
             })
+        defaultValue: null
       - name: quota
         description: Configuration related to quotas.
         varType: |-
@@ -136,6 +137,7 @@ spec:
                 quota_duration = optional(string)
               }))
             })
+        defaultValue: null
       - name: mfa
         description: Options related to Multi-Factor Authentication (MFA).
         varType: |-
@@ -148,6 +150,7 @@ spec:
                 }))
               })))
             })
+        defaultValue: null
       - name: multi_tenant
         description: Configuration related to multi-tenant functionality.
         varType: |-
@@ -155,12 +158,14 @@ spec:
               allow_tenant_creation   = optional(bool)
               default_tenant_location = optional(string)
             })
+        defaultValue: null
       - name: monitoring
         description: Configuration related to monitoring project activity.
         varType: |-
           object({
               request_logging_enabled = optional(bool)
             })
+        defaultValue: null
     outputs:
       - name: enabled_providers
         description: List of enabled authentication providers.
