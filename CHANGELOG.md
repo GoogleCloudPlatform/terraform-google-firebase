@@ -8,6 +8,14 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.2.4](https://github.com/GoogleCloudPlatform/terraform-google-firebase/compare/v0.2.3...v0.2.4) (2026-10-15)
+
+
+### Bug Fixes
+
+* populate null defaultValue in firebase-app-hosting blueprint metadata ([#32](https://github.com/GoogleCloudPlatform/terraform-google-firebase/issues/32)) ([6fcba74](https://github.com/GoogleCloudPlatform/terraform-google-firebase/commit/6fcba7409bd658f3f5e8496d83b15420cd17c0f1))
+* populate null defaultValue in firebase-auth blueprint metadata ([#33](https://github.com/GoogleCloudPlatform/terraform-google-firebase/issues/33)) ([cc9293e](https://github.com/GoogleCloudPlatform/terraform-google-firebase/commit/cc9293eea62ad7abe7e419e2e5cee14e5da740f8))
+
 ## [0.2.3](https://github.com/GoogleCloudPlatform/terraform-google-firebase/releases/tag/v0.2.3) - 2026-04-08
 
 ### Features
