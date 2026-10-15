@@ -80,9 +80,11 @@ spec:
       - name: environment
         description: The environment for the App Hosting backend
         varType: string
+        defaultValue: null
       - name: service_account
         description: The service account used by the App Hosting backend
         varType: string
+        defaultValue: null
         connections:
           - source:
               source: github.com/terraform-google-modules/terraform-google-service-accounts//modules/simple-sa
